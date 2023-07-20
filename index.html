@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,12 +23,33 @@
             left: 0;
             z-index: -1;
         }
+
+        /* Estilos para el formulario de inicio de sesión */
+        #loginForm {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #loginForm form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #loginForm label,
+        #loginForm input {
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
-    <!-- Aquí pondremos la imagen que queremos mostrar -->
     <img src="https://i.ibb.co/8m2HXFc/f8d7862d-0369-478e-93f3-3a1268ad03aa-transformed.png" id="fakeImage" alt="Imagen de mentira">
-     <div id="loginForm">
+
+    <!-- Formulario de inicio de sesión -->
+    <div id="loginForm">
         <form>
             <label for="username">Nombre de usuario:</label>
             <input type="text" id="username" name="username" required>
@@ -38,9 +60,5 @@
             <input type="submit" value="Iniciar sesión">
         </form>
     </div>
-</body>
-
-
-    
 </body>
 </html>
