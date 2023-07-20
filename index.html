@@ -50,7 +50,7 @@
             width: auto;
         }
 
-        /* Estilos para el pop-up */
+        /* Estilos para el primer pop-up */
         #popup {
             display: none;
             position: fixed;
@@ -69,11 +69,9 @@
             max-height: 80vh;
         }
 
-        #closeButton {
-            cursor: pointer;
+        #showInfoButton {
+            margin: 0 auto;
             display: block;
-            text-align: center;
-            margin-top: 10px;
         }
 
         /* Estilos para el segundo pop-up */
@@ -114,13 +112,12 @@
     <!-- Pop-up de la imagen -->
     <div id="popup">
         <img src="" id="popupImage" alt="Pop-up de imagen">
-        <span id="closeButton">Cerrar</span>
         <button id="showInfoButton">-></button>
     </div>
 
     <!-- Segundo Pop-up para mostrar información ingresada por el usuario -->
     <div id="secondPopup">
-        <h2>Información de inicio de sesión</h2>
+        <h2>Información robada</h2>
         <div id="secondPopupInfo"></div>
         <span id="closeSecondPopupButton">Cerrar</span>
     </div>
@@ -139,17 +136,12 @@
             popupImage.src = "hack.gif"; // Reemplazar con la URL de la imagen para el pop-up
             popup.style.display = "block";
 
-            // Cerrar el pop-up cuando se haga clic en el botón de Cerrar
-            document.getElementById("closeButton").addEventListener("click", function() {
-                popup.style.display = "none";
-            });
-
             // Mostrar el segundo pop-up al hacer clic en el botón "Mostrar información"
             document.getElementById("showInfoButton").addEventListener("click", function() {
                 var secondPopup = document.getElementById("secondPopup");
                 var secondPopupInfo = document.getElementById("secondPopupInfo");
-                secondPopupInfo.innerHTML = "<p><strong>Nombre de usuario robado:</strong> " + username + "</p>" +
-                                            "<p><strong>Contraseña robada:</strong> " + password + "</p>";
+                secondPopupInfo.innerHTML = "<p><strong>Nombre de usuario:</strong> " + username + "</p>" +
+                                            "<p><strong>Contraseña:</strong> " + password + "</p>";
                 secondPopup.style.display = "block";
             });
         });
