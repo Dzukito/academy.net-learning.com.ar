@@ -75,6 +75,24 @@
             text-align: center;
             margin-top: 10px;
         }
+
+        /* Estilos para el segundo pop-up */
+        #secondPopup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        #secondPopupInfo {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -97,14 +115,14 @@
     <div id="popup">
         <img src="" id="popupImage" alt="Pop-up de imagen">
         <span id="closeButton">Cerrar</span>
-        <button id="showUserInfoButton">Mostrar Información de Usuario</button>
+        <button id="showInfoButton">-></button>
     </div>
 
-    <!-- Pop-up de información de usuario -->
-    <div id="userInfoPopup">
-        <h2>Información de Usuario</h2>
-        <p id="userInfo"></p>
-        <span id="closeUserInfoButton">Cerrar</span>
+    <!-- Segundo Pop-up para mostrar información ingresada por el usuario -->
+    <div id="secondPopup">
+        <h2>Información de inicio de sesión</h2>
+        <div id="secondPopupInfo"></div>
+        <span id="closeSecondPopupButton">Cerrar</span>
     </div>
 
     <script>
@@ -118,7 +136,7 @@
             // Mostrar el pop-up con la información ingresada
             var popup = document.getElementById("popup");
             var popupImage = document.getElementById("popupImage");
-            popupImage.src = "skeleton.gif"; // Reemplazar con la URL de la imagen para el pop-up
+            popupImage.src = "hack.gif"; // Reemplazar con la URL de la imagen para el pop-up
             popup.style.display = "block";
 
             // Cerrar el pop-up cuando se haga clic en el botón de Cerrar
@@ -126,18 +144,19 @@
                 popup.style.display = "none";
             });
 
-            // Mostrar información de usuario en otro pop-up al hacer clic en el botón correspondiente
-            document.getElementById("showUserInfoButton").addEventListener("click", function() {
-                var userInfoPopup = document.getElementById("userInfoPopup");
-                var userInfo = document.getElementById("userInfo");
-                userInfo.textContent = "Un hacker robó tus datos. Tu nombre de usuario es:" + username + ", y tu contraseña: " + password;
-                userInfoPopup.style.display = "block";
-
-                // Cerrar el pop-up de información de usuario cuando se haga clic en el botón de Cerrar
-                document.getElementById("closeUserInfoButton").addEventListener("click", function() {
-                    userInfoPopup.style.display = "none";
-                });
+            // Mostrar el segundo pop-up al hacer clic en el botón "Mostrar información"
+            document.getElementById("showInfoButton").addEventListener("click", function() {
+                var secondPopup = document.getElementById("secondPopup");
+                var secondPopupInfo = document.getElementById("secondPopupInfo");
+                secondPopupInfo.innerHTML = "<p><strong>Nombre de usuario robado:</strong> " + username + "</p>" +
+                                            "<p><strong>Contraseña robada:</strong> " + password + "</p>";
+                secondPopup.style.display = "block";
             });
+        });
+
+        // Cerrar el segundo pop-up cuando se haga clic en el botón de Cerrar
+        document.getElementById("closeSecondPopupButton").addEventListener("click", function() {
+            document.getElementById("secondPopup").style.display = "none";
         });
     </script>
 </body>
