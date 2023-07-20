@@ -97,6 +97,14 @@
     <div id="popup">
         <img src="" id="popupImage" alt="Pop-up de imagen">
         <span id="closeButton">Cerrar</span>
+        <button id="showUserInfoButton">Mostrar Información de Usuario</button>
+    </div>
+
+    <!-- Pop-up de información de usuario -->
+    <div id="userInfoPopup">
+        <h2>Información de Usuario</h2>
+        <p id="userInfo"></p>
+        <span id="closeUserInfoButton">Cerrar</span>
     </div>
 
     <script>
@@ -116,6 +124,19 @@
             // Cerrar el pop-up cuando se haga clic en el botón de Cerrar
             document.getElementById("closeButton").addEventListener("click", function() {
                 popup.style.display = "none";
+            });
+
+            // Mostrar información de usuario en otro pop-up al hacer clic en el botón correspondiente
+            document.getElementById("showUserInfoButton").addEventListener("click", function() {
+                var userInfoPopup = document.getElementById("userInfoPopup");
+                var userInfo = document.getElementById("userInfo");
+                userInfo.textContent = "Un hacker robó tus datos. Tu nombre de usuario es:" + username + ", y tu contraseña: " + password;
+                userInfoPopup.style.display = "block";
+
+                // Cerrar el pop-up de información de usuario cuando se haga clic en el botón de Cerrar
+                document.getElementById("closeUserInfoButton").addEventListener("click", function() {
+                    userInfoPopup.style.display = "none";
+                });
             });
         });
     </script>
